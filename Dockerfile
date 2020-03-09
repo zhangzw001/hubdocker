@@ -8,7 +8,7 @@ RUN apt-get update \
  && apt-get clean \
  && cd /root \
  && wget http://www.xunsearch.com/download/xunsearch-full/xunsearch-full-$XUNSEARCH_VERSION.tar.bz2 \
- && tar -vf xunsearch-full-$XUNSEARCH_VERSION.tar.bz2 \
+ && tar -xf xunsearch-full-$XUNSEARCH_VERSION.tar.bz2 \
  && cd xunsearch-full-$XUNSEARCH_VERSION \
  && sh setup.sh --prefix=/usr/local/xunsearch \
  && echo '' >> /usr/local/xunsearch/bin/xs-ctl.sh \
