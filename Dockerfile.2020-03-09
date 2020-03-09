@@ -1,26 +1,25 @@
 FROM ubuntu:16.04
 MAINTAINER zhangzw zhangzw@boqii.com
 
-ENV XUNSEARCH_VERSION 1.4.7
+copy xunsearch-full-1.4.7.tar.bz2 /root
 
 RUN apt-get update \
+ && apt-get install net-tools -y \
  && apt-get install -qy --no-install-recommends  make gcc g++ bzip2 zlib1g-dev \
  && apt-get clean \
  && cd /root \
- && wget -O "http://www.xunsearch.com/download/xunsearch-full/xunsearch-full-$XUNSEARCH_VERSION.tar.bz2" \
- && tar -vf xunsearch-full-$XUNSEARCH_VERSION.tar.bz2 \
- && cd xunsearch-full-$XUNSEARCH_VERSION \
- && sh setup.sh --prefix=/usr/local/xunsearch \
+ && tar -xvf xunsearch-full-1.4.7.tar.bz2 \
+ && cd /root/xunsearch-full-1.4.7 && sh setup.sh --prefix=/usr/local/xunsearch \
  && echo '' >> /usr/local/xunsearch/bin/xs-ctl.sh \
  && echo 'tail -f /dev/null' >> /usr/local/xunsearch/bin/xs-ctl.sh \
- && apt-get purge -y --auto-remove make gcc g++ bzip2 zlib1g-dev \
  && rm -rf /var/lib/apt/lists/* \
- && rm -rf /root/xunsearch-full-*
-
+ && apt-get purge -y --auto-remove make gcc g++ bzip2 zlib1g-dev \
+ && rm -rf /root/xunsearch-full-1.4.7*
 
 # Configure it
-VOLUME ["/usr/local/xunsearch/data"]
-EXPOSE 8383 8384
+#VOLUME ["/usr/local/xunsearch/data"]
+EXPOSE 8383
+EXPOSE 8384
 
 WORKDIR /usr/local/xunsearch
 RUN echo "#!/bin/sh" > bin/xs-docker.sh \
