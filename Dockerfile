@@ -7,7 +7,7 @@ RUN apt-get update \
  && apt-get install -qy --no-install-recommends  wget make gcc g++ bzip2 zlib1g-dev \
  && apt-get clean \
  && cd /root \
- && wget -O "http://www.xunsearch.com/download/xunsearch-full/xunsearch-full-$XUNSEARCH_VERSION.tar.bz2" \
+ && wget http://www.xunsearch.com/download/xunsearch-full/xunsearch-full-$XUNSEARCH_VERSION.tar.bz2 \
  && tar -vf xunsearch-full-$XUNSEARCH_VERSION.tar.bz2 \
  && cd xunsearch-full-$XUNSEARCH_VERSION \
  && sh setup.sh --prefix=/usr/local/xunsearch \
