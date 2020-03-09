@@ -1,4 +1,4 @@
-FROM hub.boqii.com/bq/ubuntu:16.04
+FROM ubuntu:16.04
 MAINTAINER zhangzw zhangzw@boqii.com
 
 copy xunsearch-full-1.4.7.tar.bz2 /root
@@ -7,11 +7,9 @@ ENV LANG zh_CN.utf8
 ENV LANGUAGE zh_CN.utf8
 
 RUN apt-get update \
- && apt-get install net-tools  language-pack-zh-hans -y \
+ && apt-get install net-tools -y \
  && apt-get install -qy --no-install-recommends  make gcc g++ bzip2 zlib1g-dev \
  && apt-get clean \
- && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
- && echo 'Asia/Shanghai' >/etc/timezone \
  && cd /root \
  && tar -xvf xunsearch-full-1.4.7.tar.bz2 \
  && cd /root/xunsearch-full-1.4.7 && sh setup.sh --prefix=/usr/local/xunsearch \
