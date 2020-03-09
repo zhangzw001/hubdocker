@@ -4,7 +4,7 @@ MAINTAINER zhangzw zhangzw@boqii.com
 ENV XUNSEARCH_VERSION 1.4.7
 
 RUN apt-get update \
- && apt-get install -qy --no-install-recommends  make gcc g++ bzip2 zlib1g-dev \
+ && apt-get install -qy --no-install-recommends  wget make gcc g++ bzip2 zlib1g-dev \
  && apt-get clean \
  && cd /root \
  && wget -O "http://www.xunsearch.com/download/xunsearch-full/xunsearch-full-$XUNSEARCH_VERSION.tar.bz2" \
@@ -13,7 +13,7 @@ RUN apt-get update \
  && sh setup.sh --prefix=/usr/local/xunsearch \
  && echo '' >> /usr/local/xunsearch/bin/xs-ctl.sh \
  && echo 'tail -f /dev/null' >> /usr/local/xunsearch/bin/xs-ctl.sh \
- && apt-get purge -y --auto-remove make gcc g++ bzip2 zlib1g-dev \
+ && apt-get purge -y --auto-remove wget make gcc g++ bzip2 zlib1g-dev \
  && rm -rf /var/lib/apt/lists/* \
  && rm -rf /root/xunsearch-full-*
 
