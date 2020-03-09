@@ -3,9 +3,6 @@ MAINTAINER zhangzw zhangzw@boqii.com
 
 copy xunsearch-full-1.4.7.tar.bz2 /root
 
-ENV LANG zh_CN.utf8
-ENV LANGUAGE zh_CN.utf8
-
 RUN apt-get update \
  && apt-get install net-tools -y \
  && apt-get install -qy --no-install-recommends  make gcc g++ bzip2 zlib1g-dev \
