@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 MAINTAINER zhangzw zhangzw@boqii.com
 
-ENV XUNSEARCH_VERSION 1.4.7
+ENV XUNSEARCH_VERSION 1.4.9
 
 RUN apt-get update \
  && apt-get install -qy --no-install-recommends  wget make gcc g++ bzip2 zlib1g-dev \
